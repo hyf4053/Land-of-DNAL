@@ -30,9 +30,4 @@ public class PlayMode : MonoBehaviour {
            // hexMapCamera.MovingCameraToUnit();
         }
     }
-
-    public void GetHexCellList()
-    {
-
-    }
 }

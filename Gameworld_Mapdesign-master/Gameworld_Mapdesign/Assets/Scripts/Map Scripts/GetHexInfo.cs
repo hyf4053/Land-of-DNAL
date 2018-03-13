@@ -9,7 +9,7 @@ public class GetHexInfo : MonoBehaviour
 
     // HexMesh hexMesh;
     // HexCell cell;
-
+    //HexDirection NE = HexDirection.NE;
 
     public Text cellInfoDisplay;
     public HexGrid hexGrid;
@@ -50,6 +50,7 @@ public class GetHexInfo : MonoBehaviour
             Debug.Log(currentHexCoordinates.ToString());
             GetHexGridInfo();
             SetCitys(firstMap.MAXCITY);
+            SetPortal(firstMap.MAXPORTAL);
             //GetHexCellList();
         }
     }
@@ -73,7 +74,7 @@ public class GetHexInfo : MonoBehaviour
         urbanLevel = currentHexCell.UrbanLevel;
 
         currentHexCell.EnableHighlight(Color.yellow);
-      //  currentHexCell.PortalIndex = 1;
+        //currentHexCell.PortalIndex = 1;
         //currentHexCell.Walled = true;
        // currentHexCell.SpaceCrackIndex = 1;
         //currentHexCell.SpecialIndex = 1;
@@ -132,10 +133,36 @@ public class GetHexInfo : MonoBehaviour
             if (i==0&&!hexGrid.cells[random].IsUnderwater&&hexGrid.cells[random].TerrainTypeIndex!=4)
             {
                 hexGrid.cells[random].UrbanLevel = 3;
+                hexGrid.cells[random].Walled = true;
+                hexGrid.cells[random].GetNeighbor(HexDirection.NE).UrbanLevel = 2;
+                hexGrid.cells[random].GetNeighbor(HexDirection.NE).Walled = true;
+                hexGrid.cells[random].GetNeighbor(HexDirection.E).UrbanLevel = 3;
+                hexGrid.cells[random].GetNeighbor(HexDirection.E).Walled = true;
+                hexGrid.cells[random].GetNeighbor(HexDirection.NW).UrbanLevel = 2;
+                hexGrid.cells[random].GetNeighbor(HexDirection.NW).Walled = true;
+                hexGrid.cells[random].GetNeighbor(HexDirection.SE).UrbanLevel = 2;
+                hexGrid.cells[random].GetNeighbor(HexDirection.SE).Walled = true;
+                hexGrid.cells[random].GetNeighbor(HexDirection.SW).UrbanLevel = 1;
+              //  hexGrid.cells[random].GetNeighbor(HexDirection.SW).Walled = true;
+                hexGrid.cells[random].GetNeighbor(HexDirection.W).UrbanLevel = 1;
+                hexGrid.cells[random].GetNeighbor(HexDirection.W).Walled = true;
             }
             else if (i!=0&&!hexGrid.cells[random].IsUnderwater)
             {
                 hexGrid.cells[random].UrbanLevel = 3;
+                hexGrid.cells[random].Walled = true;
+                hexGrid.cells[random].GetNeighbor(HexDirection.NE).UrbanLevel = 2;
+                hexGrid.cells[random].GetNeighbor(HexDirection.NE).Walled = true;
+                hexGrid.cells[random].GetNeighbor(HexDirection.E).UrbanLevel = 3;
+                hexGrid.cells[random].GetNeighbor(HexDirection.E).Walled = true;
+                hexGrid.cells[random].GetNeighbor(HexDirection.NW).UrbanLevel = 2;
+                hexGrid.cells[random].GetNeighbor(HexDirection.NW).Walled = true;
+                hexGrid.cells[random].GetNeighbor(HexDirection.SE).UrbanLevel = 2;
+                hexGrid.cells[random].GetNeighbor(HexDirection.SE).Walled = true;
+                hexGrid.cells[random].GetNeighbor(HexDirection.SW).UrbanLevel = 1;
+                hexGrid.cells[random].GetNeighbor(HexDirection.SW).Walled = true;
+                hexGrid.cells[random].GetNeighbor(HexDirection.W).UrbanLevel = 1;
+              //  hexGrid.cells[random].GetNeighbor(HexDirection.W).Walled = true;
             }
             else
             {
@@ -144,5 +171,92 @@ public class GetHexInfo : MonoBehaviour
         }
     }
 
+    public void SetPortal(int portalNum)
+    {
+        for (int i = 0; i < portalNum; i++)
+        {
+            int random = GetRandomNum();
+            if (!hexGrid.cells[random].IsUnderwater && hexGrid.cells[random].UrbanLevel == 0&&hexGrid.cells[random].PortalIndex == 0)
+            {
+                hexGrid.cells[random].PortalIndex = 1;
+            }
+            else
+            {
+                i--;
+            }
+        }
+    }
+
+    public void SetVillage(int villageNum)
+    {
+        for (int i = 0; i < villageNum; i++)
+        {
+            int random = GetRandomNum();
+            if (!hexGrid.cells[random].IsUnderwater && hexGrid.cells[random].UrbanLevel == 0 && hexGrid.cells[random].PortalIndex == 0)
+            {
+
+            }
+        }
+    }
+
+    public void SetRareOre(int oreNum)
+    {
+        for (int i = 0; i < oreNum; i++)
+        {
+            int random = GetRandomNum();
+            if (!hexGrid.cells[random].IsUnderwater && hexGrid.cells[random].UrbanLevel == 0 && hexGrid.cells[random].PortalIndex == 0)
+            {
+
+            }
+        }
+    }
+
+    public void SetHiddenPlaces(int hiddenPlaceNum)
+    {
+        for (int i = 0; i < hiddenPlaceNum; i++)
+        {
+            int random = GetRandomNum();
+            if (!hexGrid.cells[random].IsUnderwater && hexGrid.cells[random].UrbanLevel == 0 && hexGrid.cells[random].PortalIndex == 0)
+            {
+
+            }
+        }
+    }
+
+    public void SetEnemyZone(int enemyZoneNum)
+    {
+        for (int i = 0; i < enemyZoneNum; i++)
+        {
+            int random = GetRandomNum();
+            if (!hexGrid.cells[random].IsUnderwater && hexGrid.cells[random].UrbanLevel == 0 && hexGrid.cells[random].PortalIndex == 0)
+            {
+
+            }
+        }
+    }
+
+    public void SetDock(int dockNum)
+    {
+        for (int i = 0; i < dockNum; i++)
+        {
+            int random = GetRandomNum();
+            if (hexGrid.cells[random].IsUnderwater && hexGrid.cells[random].UrbanLevel == 0 && hexGrid.cells[random].PortalIndex == 0)
+            {
+
+            }
+        }
+    }
+
+    public void SetChurch(int churchNum)
+    {
+        for (int i = 0; i < churchNum; i++)
+        {
+            int random = GetRandomNum();
+            if (!hexGrid.cells[random].IsUnderwater && hexGrid.cells[random].UrbanLevel == 0 && hexGrid.cells[random].PortalIndex == 0)
+            {
+
+            }
+        }
+    }
 
 }

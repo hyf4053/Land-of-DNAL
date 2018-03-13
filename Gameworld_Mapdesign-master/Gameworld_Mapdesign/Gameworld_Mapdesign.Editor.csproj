@@ -292,6 +292,10 @@
       <Project>{3CE4C15B-0E46-4E04-0C7E-A64FEDAB4A03}</Project>
       <Name>Gameworld_Mapdesign</Name>
     </ProjectReference>
+    <ProjectReference Include="Gameworld_Mapdesign.unityproj">
+      <Project>{3CE4C15B-0E46-4E04-0C7E-A64FEDAB4A03}</Project>
+      <Name>Gameworld_Mapdesign</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\PostProcessing\Editor\Attributes\PostProcessingModelEditorAttribute.cs" />
@@ -332,6 +336,7 @@
     <Compile Include="Assets\Scripts\Editor\TextureArrayWizard.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\LitParticles\LitParticle.shader" />
     <None Include="Assets\Materials\Estuary.shader" />
     <None Include="Assets\Materials\Features\Feature.shader" />
     <None Include="Assets\Materials\HexCellData.cginc" />

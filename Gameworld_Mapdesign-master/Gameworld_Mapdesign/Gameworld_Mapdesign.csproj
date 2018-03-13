@@ -288,6 +288,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\LitParticles\CameraToWorld.cs" />
+    <Compile Include="Assets\LitParticles\RandomSphericalPosition.cs" />
+    <Compile Include="Assets\LitParticles\RotateAround.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
@@ -365,6 +368,7 @@
     <Compile Include="Assets\Scripts\UI\SaveLoadMenu.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\LitParticles\LitParticle.shader" />
     <None Include="Assets\Materials\Estuary.shader" />
     <None Include="Assets\Materials\Features\Feature.shader" />
     <None Include="Assets\Materials\HexCellData.cginc" />
