@@ -11,7 +11,8 @@ public class HexMapEditor : MonoBehaviour {
 	int activeElevation;
 	int activeWaterLevel;
 
-	int activeUrbanLevel, activeFarmLevel, activePlantLevel, activeSpecialIndex,activePortalIndex /*,activeSpaceCrackIndex*/;
+	int activeUrbanLevel, activeFarmLevel, activePlantLevel, activeSpecialIndex,activePortalIndex,
+	activeVillageIndex /*,activeSpaceCrackIndex*/;
 
 	int activeTerrainTypeIndex;
 
@@ -20,7 +21,8 @@ public class HexMapEditor : MonoBehaviour {
 	bool applyElevation = true;
 	bool applyWaterLevel = true;
 
-	bool applyUrbanLevel, applyFarmLevel, applyPlantLevel, applySpecialIndex, applyPortalIndex/*,applySpaceIndex*/;
+	bool applyUrbanLevel, applyFarmLevel, applyPlantLevel, applySpecialIndex, applyPortalIndex,
+	applyVillageIndex/*,applySpaceIndex*/;
 
 	enum OptionalToggle {
 		Ignore, Yes, No
@@ -93,7 +95,14 @@ public class HexMapEditor : MonoBehaviour {
 	public void SetSpecialIndex (float index) {
 		activeSpecialIndex = (int)index;
 	}
-/*
+
+	public void SetApplyVillageIndex (bool toggle){
+		applyVillageIndex = toggle;
+	}
+
+	public void SetVillageIndex(float index){
+		activeVillageIndex = (int)index;	
+	}/*
     public void SetApplySpaceCrackIndex (bool toggle)
     {
         applySpaceIndex = toggle;
@@ -267,6 +276,9 @@ public class HexMapEditor : MonoBehaviour {
             {
                 cell.PortalIndex = activePortalIndex;
             }
+			if(applyVillageIndex){
+				cell.VillageIndex = activeVillageIndex;
+			}
             /*
             if (applySpaceIndex)
             {

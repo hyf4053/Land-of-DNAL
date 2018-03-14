@@ -11,7 +11,9 @@ public class HexFeatureManager : MonoBehaviour {
 
 	public Transform[] special;
 
-   public Transform[] portal;
+    public Transform[] portal;
+
+	public Transform[] village;
 
 	Transform container;
 
@@ -118,6 +120,14 @@ public class HexFeatureManager : MonoBehaviour {
         instance1.localRotation = Quaternion.Euler(0f, 360f * hash.e, 0f);
         instance1.SetParent(container, false);
     }
+
+	public void AddVillageFeature (HexCell cell, Vector3 position){
+		Transform instance = Instantiate(village[cell.VillageIndex-1]);
+		instance.localPosition = HexMetrics.Perturb(position*1.005f);
+		HexHash hash = HexMetrics.SampleHashGrid(position);
+		instance.localRotation = Quaternion.Euler(0f,360f*hash.e,0f);
+		instance.SetParent(container,true);
+	}
 
 /*
     public void AddSpaceCrack(HexCell cell, Vector3 position)

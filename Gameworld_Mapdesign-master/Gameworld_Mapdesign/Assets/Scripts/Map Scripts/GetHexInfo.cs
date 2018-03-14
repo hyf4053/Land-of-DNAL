@@ -51,6 +51,7 @@ public class GetHexInfo : MonoBehaviour
             GetHexGridInfo();
             SetCitys(firstMap.MAXCITY);
             SetPortal(firstMap.MAXPORTAL);
+            SetVillage(firstMap.MAXVILLAGE);
             //GetHexCellList();
         }
     }
@@ -195,6 +196,10 @@ public class GetHexInfo : MonoBehaviour
             if (!hexGrid.cells[random].IsUnderwater && hexGrid.cells[random].UrbanLevel == 0 && hexGrid.cells[random].PortalIndex == 0)
             {
 
+                hexGrid.cells[random].VillageIndex = 1;
+            }
+            else{
+                i--;
             }
         }
     }

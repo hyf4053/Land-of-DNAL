@@ -78,6 +78,10 @@ public class HexGridChunk : MonoBehaviour {
         {
           features.AddPortalFeature(cell, cell.Position);
         }
+
+		if(cell.IsVillages){
+			features.AddVillageFeature(cell,cell.Position);
+		}
     }
 
 	void Triangulate (HexDirection direction, HexCell cell) {

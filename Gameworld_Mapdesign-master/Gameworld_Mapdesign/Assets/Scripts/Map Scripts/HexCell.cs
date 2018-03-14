@@ -205,6 +205,20 @@ public class HexCell : MonoBehaviour {
 		}
 	}
 
+//增加村庄信息
+	public int VillageIndex{
+		get{
+			return villageIndex;
+		}
+		set{
+			if(villageIndex != value && !HasRiver){
+				villageIndex = value;
+				RemoveRoads();
+				RefreshSelfOnly();
+			}
+		}
+	}
+
     public int PortalIndex
     {
         get
@@ -257,6 +271,13 @@ public class HexCell : MonoBehaviour {
     public bool IsSpecial {
 		get {
 			return specialIndex > 0;
+		}
+	}
+
+//增加村庄单元格判断
+	public bool IsVillages{
+		get{
+			return villageIndex > 0;
 		}
 	}
 
@@ -332,6 +353,8 @@ public class HexCell : MonoBehaviour {
 
 	int elevation = int.MinValue;
 	int waterLevel;
+
+	int villageIndex;//添加村庄
 
 	int urbanLevel, farmLevel, plantLevel;
 
@@ -559,6 +582,7 @@ public class HexCell : MonoBehaviour {
 		writer.Write((byte)farmLevel);
 		writer.Write((byte)plantLevel);
 		writer.Write((byte)specialIndex);
+		writer.Write((byte)portalIndex);//加入传送门保存
 		writer.Write(walled);
 
 		if (hasIncomingRiver) {
@@ -598,6 +622,7 @@ public class HexCell : MonoBehaviour {
 		farmLevel = reader.ReadByte();
 		plantLevel = reader.ReadByte();
 		specialIndex = reader.ReadByte();
+		portalIndex = reader.ReadByte();//加入传送门读取
 		walled = reader.ReadBoolean();
 
 		byte riverData = reader.ReadByte();
